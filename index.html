@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>
+		Plugin Rotate News
+	</title>
+	<meta content="author" value="Gabriel Bruno de Oliveira Mendonça" />
+	<meta charset="utf-8" />
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="js/rotate-news.js" type="text/javascript" language="javascript"></script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+
+			$('#news').rotateNews({'speed':3200, 'autoplay': true});
+
+		});
+	</script>
+
+	<style>
+		#news-view
+		{
+			float: left;
+			background-color: #eee; 
+			width: 300px; 
+			height: 300px;
+		}
+
+		#news{
+			float: left;
+			width: 400px;
+		}
+
+		#news li{
+		}
+
+		.selected{
+			background-color: #eee;
+		}
+	</style>
+
+
+</head>
+<body>
+
+	<div id="news-view" style="">
+		
+		<span id="news-image-description"></span>
+	</div>
+
+	<ul id="news">
+		<li>
+				<h1>Titulo Notícia 1</h1>
+				<p>
+					Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica
+				</p>
+				<img src="news1.jpg" alt="kljlkjlj"/>
+		</li>
+		<li>
+				<h1>Titulo Notícia 2</h1>
+				<p>
+					Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica
+				</p>
+				<img src="news2.jpg" alt="kjhkhkjh" />
+		</li>
+		<li>
+				<h1>Titulo Notícia 1</h1>
+				<p>
+					Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica
+				</p>
+				<img src="news1.jpg" alt="kljlkjlj"/>
+		</li>
+	</ul>
+
+
+</body>
+</html>
