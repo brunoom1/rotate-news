@@ -6,10 +6,10 @@
 (function($){
 	$.fn.rotateNews = function(settings){
 		var config = {
-			'view_id':'news-view',
-			'image_description':'news-image-description',
+			'viewId':'news-view',
+			'imageDescriptionId':'news-image-description',
 			'autoplay': true,
-			'speed': 1000,
+			'speed': 3000,
 			'classSelected':'selected'
 		};
 
@@ -24,10 +24,14 @@
 		var i = 0; // conta as notícias
 		var n = 0; // conta as imagens
 
-		var view = $('#' + config.view_id);
-		var image_description = $('#' + config.image_description);
+		var view = $('#' + config.viewId);
+		var image_description = $('#' + config.imageDescriptionId);
 
-		if(!view[0]) alert('Crie uma div com o id "'+config.view_id+'"');
+		var lastImg = null;
+		var efect = 'simple';
+		var timerId = null;
+
+		if(!view[0]) alert('Crie uma div com o id "'+config.viewId+'"');
 
 		$(this).find('li').each(function(){
 
@@ -43,18 +47,26 @@
 			}
 
 			view[0].appendChild(img);
+			lastImg = img;
 
-			console.log(images);
 
 			$(this).bind('click','',function(evt){
 
-				for(var x = 0; x < images.length; x++){
-					if(images[x] != img){
-						$(images[x]).hide();
+				// efeito a ser usado quando o mouse passa sobre
+				if(efect == 'simple'){
+					for(var x = 0; x < images.length; x++){
+						if(images[x] != img){
+							$(images[x]).hide();
+						}
 					}
+					$(img).show();
 				}
-
-				$(img).show();
+				else{
+					if(lastImg) $(lastImg).fadeOut(800, function(){
+						$(img).fadeIn();						
+					});
+				}
+						
 				// se a div description for adicionada
 				if(image_description[0]){
 					image_description.text(img.attributes['alt'].value);
@@ -63,26 +75,39 @@
 				$('.' + config.classSelected).removeClass();
 
 				$(this).addClass(config.classSelected);
+				lastImg = img;
 			});
 
 			$(this).bind('mouseover','',function(){
+				efect = "simple";
+				clearInterval(timerId);
 				this.click();
 			});
+			$(this).bind('mouseout','',function(){
+				timerId = setInterval(anim,config.speed);
+			})
 		});
 
 		var d = 0;
 
 		if(config.autoplay){
-			var timeId = setInterval(function(){
+			timerId = setInterval(anim,config.speed);
+		}
 
-				if(elements.length > 0){
-					elements[d++].click();
-				}
+		function anim(){
 
-				if(d == elements.length){
-					d = 0;
-				}
-			},config.speed);
+			if(elements.length > 0){
+				efect = 'null'
+				elements[d++].click();
+			}
+
+			if(d == elements.length){
+				d = 0;
+			}
+		}
+
+		if(elements.length > 0){
+			elements[0].click();
 		}
 	}
 

@@ -7,6 +7,7 @@
 	</title>
 	<meta content="author" value="Gabriel Bruno de Oliveira Mendonça" />
 	<meta charset="utf-8" />
+	<link href='http://fonts.googleapis.com/css?family=Overlock' rel='stylesheet' type='text/css'>	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="js/rotate-news.js" type="text/javascript" language="javascript"></script>
 
@@ -20,24 +21,90 @@
 	</script>
 
 	<style>
+
+		body{
+			font-family: 'Overlock', cursive;
+			background-color: #555;
+		}
+
+		.title{
+			border-bottom: solid 1px #ddd;
+			padding-bottom: 10px;
+		}
+
 		#news-view
 		{
 			float: left;
 			background-color: #eee; 
-			width: 300px; 
-			height: 300px;
+			width: auto; 
+			height: auto;
+			border: solid 1px #eee;
+		}
+
+		#news-image-description{
+			display: block;
+			position: absolute;
+			background-color: #333;
+			padding: 5px 10px;
+			color: white;
+			z-index: 10000;
+			opacity: .8;
 		}
 
 		#news{
 			float: left;
 			width: 400px;
+			list-style: none;
+			margin: 0px 10px;
+			padding: 0px;
 		}
 
+
 		#news li{
+			margin: 0px;
+			padding: 10px;
+			font-size: 14px;
+		}
+
+		#news li h1{
+			margin: 0px;
+			font-size: 16px;
+			display: block;
+			background-color: #555;
+			color: white;
+			padding: 5px;
 		}
 
 		.selected{
+			background-color: #efefef;
+			border: solid 1px #ddd;
+		}
+
+
+		#wrapper{
+			width: 700px;
+			margin: 0 auto;
+		}
+
+		#container{
+			float: left;
+			height: auto;
+			width: 700px;
+			background-color: #fff;
+			padding: 0 20px 20px;
+		}
+
+		pre{
 			background-color: #eee;
+			padding: 5px;
+		}
+
+		#foother{
+			float: left;
+			background-color: #eee;
+			width: 700px;
+			padding: 20px;
+			border-top: solid 1px #ddd;
 		}
 	</style>
 
@@ -45,35 +112,103 @@
 </head>
 <body>
 
-	<div id="news-view" style="">
-		
-		<span id="news-image-description"></span>
-	</div>
+	<div id="wrapper">
+		<div id="container">
 
-	<ul id="news">
-		<li>
-				<h1>Titulo Notícia 1</h1>
-				<p>
-					Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica
-				</p>
-				<img src="news1.jpg" alt="kljlkjlj"/>
-		</li>
-		<li>
-				<h1>Titulo Notícia 2</h1>
-				<p>
-					Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica
-				</p>
-				<img src="news2.jpg" alt="kjhkhkjh" />
-		</li>
-		<li>
-				<h1>Titulo Notícia 1</h1>
-				<p>
-					Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica
-				</p>
-				<img src="news1.jpg" alt="kljlkjlj"/>
-		</li>
-	</ul>
+			<h1 class="title"> Plugin JQuery - Rotate News </h1>
 
+			<p>
+				Este plugin é utilizado para rotacionar notícias na forma abaixo.
+				A estrutura do html é bem simples.
+			</p>
+
+<pre>
+&lt;div id="news-view" style=""&gt;
+	&lt;span id="news-image-description"&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;ul id="news"&gt;
+	&lt;li&gt;
+			&lt;h1&gt;Titulo Notícia 1&lt;/h1&gt;
+			&lt;p&gt;
+				Lorem Ipsum é simplesmente uma simulação
+				de texto da indústria tipográfica e de impressos,
+				e vem sendo 
+			&lt;/p&gt;
+			&lt;img src="news1.jpg" alt="impressor desconhecido"/&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+			&lt;h1&gt;Titulo Notícia 2&lt;/h1&gt;
+			&lt;p&gt;
+				Lorem Ipsum é simplesmente uma simulação 
+				de texto da indústria tipográfica e de impressos,
+				e vem sendo 						
+			&lt;/p&gt;
+			&lt;img src="news2.jpg" alt="texto da indústria tipográfica" /&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+			&lt;h1&gt;Titulo Notícia 1&lt;/h1&gt;
+			&lt;p&gt;
+				Lorem Ipsum é simplesmente uma simulação 
+				de texto da indústria tipográfica e de impressos, 
+				e vem sendo
+			&lt;/p&gt;
+			&lt;img src="news1.jpg" alt="simplesmente uma simulação"/&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+</pre>	
+
+			<p>
+				Para fazer o plugin funcionar é só incorporar essas linha de código em sua página.
+			</p>
+
+<pre>
+&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="js/rotate-news.js" type="text/javascript" language="javascript"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;
+
+	$(document).ready(function(){
+
+		$('#news').rotateNews({'speed':3200, 'autoplay': true});
+
+	});
+&lt;/script&gt;
+</pre>
+
+			<h1 class="title"> Demonstração </h1>		
+
+			<div id="news-view" style="">
+				<span id="news-image-description"></span>
+			</div>
+
+			<ul id="news">
+				<li>
+						<h1>Titulo Notícia 1</h1>
+						<p>
+							Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo 
+						</p>
+						<img src="news1.jpg" alt="impressor desconhecido"/>
+				</li>
+				<li>
+						<h1>Titulo Notícia 2</h1>
+						<p>
+							Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo 						</p>
+						<img src="news2.jpg" alt="texto da indústria tipográfica" />
+				</li>
+				<li>
+						<h1>Titulo Notícia 1</h1>
+						<p>
+							Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo 						</p>
+						<img src="news3.jpg" alt="simplesmente uma simulação"/>
+				</li>
+			</ul>
+
+		</div>
+		<div id="foother">
+			Development: Gabriel Mendonça - www.gabrielmendonca.com | 2013
+		</div>
+	</div>	
 
 </body>
 </html>
