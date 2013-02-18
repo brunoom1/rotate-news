@@ -97,7 +97,6 @@
 		function anim(){
 
 			if(elements.length > 0){
-				efect = 'null'
 				elements[d++].click();
 			}
 
